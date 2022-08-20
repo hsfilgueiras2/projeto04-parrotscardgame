@@ -38,6 +38,21 @@ body > :nth-child(1){
     width: 100px;
     height: 100px;
 }
+.individual {
+    display: none;
+}
+.cardFront .front {
+    display: none;
+}
+.cardFront .individual{
+    display: block;
+}
+.permaFront .front {
+    display: none;
+}
+.permaFront .individual{
+    display: block;
+}
 .displayNone{
     display: none;
 }
