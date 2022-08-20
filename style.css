@@ -1,7 +1,8 @@
 body{
     background-color: #EEF9BF;
 }
-body > :nth-child(1){
+
+.header > :nth-child(1){
     margin-top: 40px;
     display: flex;
     justify-content: center;
@@ -16,12 +17,33 @@ body > :nth-child(1){
     letter-spacing: -0.004em;
     color: #75B79E;
 }
+@media (max-width : 720px){
+    .header > :nth-child(1){
+        font-size: 36px;
+    }
+    .header > :nth-child(2){
+        font-size: 36px;
+    }
+}
+.counter{
+    position: fixed;
+    right:0%;
+    top: 40px;
+    
+    background-color: black;
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+}
 .game{
     padding-left: 76px;
     padding-right: 76px;
     padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .cardBack{
     width: 117px;

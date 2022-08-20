@@ -1,6 +1,11 @@
-const nCards = prompt("Quantas cartas quer jogar?");
-let flippedCards =0;
+
+let nCards;
+do {nCards = prompt("Quantas cartas quer jogar?");} while(nCards % 2 !=0 || nCards >14 || nCards<4)
+let gameStarted = false;
+let flippedCards = 0;
 let correctCards = 0;
+let secondsPassed = 0;
+let myCounter;
 let cardList = document.querySelector(".game");
 const cards = [];
 const cardsOrder =[];
@@ -16,8 +21,15 @@ for (let i = 0;i<nCards;i++){
 cardsOrder.forEach(element => {
     chooseGIF(element);
 });
-alert(cardsOrder);
-
+function counterIncrease(){
+    const counter = document.querySelector(".counter");
+    secondsPassed ++;
+    counter.innerHTML = secondsPassed;
+    if (correctCards == nCards){
+        clearInterval(myCounter);
+        alert(`Você ganhou em ${flippedCards} jogadas! em ${secondsPassed} segundos`);
+    }
+}
 function flipAll(){
     let allFlipped = document.querySelector(".cardFront");
     while (allFlipped != null){
@@ -26,6 +38,8 @@ function flipAll(){
     }
 }
 function flip(cardToFlip){
+    if(gameStarted != true){myCounter = setInterval(counterIncrease,1000);gameStarted=true;}
+    flippedCards ++;
     if(cardToFlip.classList.contains("cardFront")){
         alert("selecione outra carta");
     }
@@ -42,16 +56,15 @@ function flip(cardToFlip){
             alreadyFlipped.classList.add("permaFront");
             cardToFlip.classList.remove("cardFront");
             alreadyFlipped.classList.remove("cardFront");
-            correctCards += 2 ;
+            correctCards = correctCards + 2 ;
         }
         else{
             setTimeout(flipAll, 1000)
         }
-
-
     }
     }
 }
+
 
 
 
